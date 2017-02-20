@@ -10,16 +10,5 @@
 </div>
 <div class="artwork-row row">
     <h3 class="text-center">You may be interested in...</h3>
-    <% gallery.forEach((artwork) => { %>
-      <div class="col-sm-3 home-artwork-box">
-        <img src="<%= artwork.pic_path %>" alt="<%= artwork.pic_name %>" />
-        <div class="artwork-info-wrapper">
-          <a class="title" href="/gallery/<%= artwork._id %>">
-            <strong><%= artwork.title %></strong>
-          </a><br>
-          by <span class="light-text"><%= artwork.creator.username %></span><br>
-          <span class="light-text description"><%= artwork.description %></span>
-        </div>
-      </div>
-    <%  }) %>
+
   </div>

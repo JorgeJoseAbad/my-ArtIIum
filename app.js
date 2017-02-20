@@ -137,12 +137,14 @@ app.use((req, res, next) => {
   next();
 });
 
-const index = require('./routes/index');
+// const index = require('./routes/index');
 const authRoutes = require('./routes/authentication');
 const artworkRoutes = require('./routes/gallery');
-app.use('/', index);
+const usersRoutes = require('./routes/users');
+// app.use('/', index);
 app.use('/', authRoutes);
 app.use('/gallery', artworkRoutes);
+app.use('/users', usersRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

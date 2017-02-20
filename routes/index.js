@@ -9,7 +9,8 @@ router.get('/', (req, res, next) => {
     .populate('_creator')
     .exec((err, gallery) => {
       res.render('index', {
-        gallery
+        gallery,
+        req
       });
     });
 
