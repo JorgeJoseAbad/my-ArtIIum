@@ -9,8 +9,16 @@ const STATEOFFERS_TAGS = [
 ];
 
 const offerSchema = new Schema({
-  artist_id:   objectID, //indice relacional vendedor
-  buyer_id:    objectID, //indice relacional comprador
+  artist_id:   {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true, //indice relacional vendedor
+  },
+  buyer_id:    {
+    type: Schema.Types.ObjectId, //indice relacional comprador
+    ref: 'User',
+    required: true
+  },
   artworkTittle: {
              type: String,
            }, // se rellena con el Tittle de artworkSchema
