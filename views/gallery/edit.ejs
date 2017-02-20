@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 centered-form">
+      <% if (typeof(errors) !== 'undefined'){ %>
+        <div class="alert alert-danger">
+        <ul>
+          <% for (let error in errors){ %>
+            <li><%= errors[error].message %></li>
+          <% } %>
+        </ul>
+        </div>
+      <% } %>
+      <form action="/gallery/<%= artwork._id %>" method="post">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" name="title" class="form-control" value="<%= artwork.title %>">
+        </div>
+        <div class="form-group">
+          <label for="startBid">Start Bid</label>
+          <input type="text" name="startBid" class="form-control" value="<%= artwork.startBid %>">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            class="form-control">
+            <%= artwork.description %>
+          </textarea>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label><br>
+          <select name="category" id="category">
+            <% types.forEach((category) => { %>
+              <% if (category === artwork.category) { %>
+                <option
+                  selected
+                  type="text"
+                  value="<%= category %>"
+                  class="form-control">
+                <%= category %>
+                </option>
+              <% } else { %>
+                <option type="text" value="<%= category %>" class="form-control"><%= category %></option>
+              <% } %>
+            <%  }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="deadline">Deadline</label>
+          <input type="date" name="deadline" class="form-control" value="<%= artwork.inputFormattedDate %>">
+        </div>
+        <div class="form-group">
+          <button type="submit">Update Artwork</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
