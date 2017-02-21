@@ -13,12 +13,15 @@ const {
 // } = require('../middleware/artwork-authorization');
 
 /* GET users listing. */
-router.get('/:id', (req, res, next) => {
-  User.findById(req.params.id, (err, user) => {
+router.get('/:username', (req, res, next) => {
+  User.findOne({
+    username: {
+      $eq: ''
+    }
+  }, (err, user) => {
     if (err) return next(err);
-    return res.render('user', {
-      req: req.user,
-      user
+    return res.render('users/user', {
+      req: req
     });
   });
 });

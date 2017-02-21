@@ -42,7 +42,7 @@
                   <button class="btn btn-link btn-logout" type="submit" href="/signup">Logout</a>
                 </form>
               </li>
-              <li><a href="/user">Profile</a></li>
+              <li><a href="/users/<%=req.user.username%>">Profile</a></li>
             <% } %>
           </ul>
         </div>

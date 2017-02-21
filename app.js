@@ -142,9 +142,9 @@ const authRoutes = require('./routes/authentication');
 const artworkRoutes = require('./routes/gallery');
 const usersRoutes = require('./routes/users');
 // app.use('/', index);
-app.use('/', authRoutes);
 app.use('/gallery', artworkRoutes);
 app.use('/users', usersRoutes);
+app.use('/', authRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -161,7 +161,9 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+    req
+  });
 });
 
 module.exports = app;

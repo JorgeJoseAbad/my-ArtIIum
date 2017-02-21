@@ -21,8 +21,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/login', ensureLoggedOut(), (req, res) => {
   res.render('authentication/login', {
-    req,
-    user
+    req
   });
 });
 
