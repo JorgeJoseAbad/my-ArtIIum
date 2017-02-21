@@ -156,6 +156,11 @@ progress {
   padding-right: 275px;
 }
 
+.col-md-4{
+  font-size:20px;
+  color: blue;
+}
+
 
 /* public/stylesheets/styles.css todo referido a rewards, ojo */
 .reward-wrapper {
