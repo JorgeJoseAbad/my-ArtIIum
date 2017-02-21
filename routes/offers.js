@@ -20,12 +20,12 @@ router.get('/campaigns/:id/rewards', (req, res, next) => {
 */
 
 router.get('/gallery/:id/offers', (req, res, next) => {
-  Campaign
+  Artwork
     .findById(req.params.id)
     .populate('offers')
-    .exec(   (err, gallery) => {
-      if (err || !gallerty){ return next(new Error("404")); }
-      res.render('offers/index', { gallery });
+    .exec(   (err, artwork) => {
+      if (err || !artwork){ return next(new Error("404")); }
+      res.render('offers/index', { artwork });
     });
 });
 
@@ -42,8 +42,8 @@ router.get('/gallery/:id/offers', (req, res, next) => {
 
 // routes/offers.js
 router.get('/gallery/:id/offers/new', authorizeArtwork, (req, res, next) => {
-  Gallery.findById(req.params.id, (err, gallery) => {
-    res.render('offers/new', { gallery });
+  Artwork.findById(req.params.id, (err, artwork) => {
+    res.render('offers/new', { artwork });
   });
 });
 
@@ -79,8 +79,8 @@ router.post('/campaigns/:id/rewards', authorizeCampaign, (req, res, next) => {
 */
 
 router.post('/gallery/:id/offers', authorizeArtwork, (req, res, next) => {
-  Campaign.findById(req.params.id, (err, gallery) => {
-    if (err || !gallery) { return next(new Error("404")); }
+  Artwork.findById(req.params.id, (err, artwork) => {
+    if (err || !artwork) { return next(new Error("404")); }
 
     const offer = new Offer({
         artist_id: req.body.artist_id,
@@ -95,12 +95,12 @@ router.post('/gallery/:id/offers', authorizeArtwork, (req, res, next) => {
         return res.render('offers/new', { errors: offers.errors });
       }
 
-      campaign.offers.push(offer._id);
-      campaign.save( (err) => {
+      artwork.offers.push(offer._id);
+      artwork.save( (err) => {
         if (err) {
           return next(err);
         } else {
-          return res.redirect(`/gallery/${gallery._id}`);
+          return res.redirect(`/gallery/${artwork._id}`);
         }
       });
     });

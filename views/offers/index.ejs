@@ -1,17 +1,17 @@
 <!-- views/rewards/index/ejs hay que modificar mucho -->
 <div class="container">
   <div class="row">
-    <% gallery.offers.forEach((offer) => { %>
-      <div class="col-sm-7 reward-wrapper" data-reward="<%= reward._id %>">
+    <% artiwork.offers.forEach((offer) => { %>
+      <div class="col-sm-7 reward-wrapper" data-reward="<%= offer._id %>">
         <h2>$<%= offer.amount %> or more</h2>
         <h3><%= offer.title %></h3>
         <p class="light-text"><%= offer.description %></p>
-        <form class="js-reward-form" data-campaign="<%= campaign._id %>" data-reward="<%= reward._id %>">
+        <form class="js-reward-form" data-campaign="<%= artwork._id %>" data-reward="<%= reward._id %>">
         <hr>
           <div class="form-group reward-donate-form">
             <label for="pledge-amount">Pledge Amount</label><br>
             <input id="pledge-amount" type="text" class="js-reward-input form-control">
-            <button class="submit-reward" type="submit">Get Reward</button>
+            <button class="submit-reward" type="submit">Get Offer</button>
           </div>
         </form>
         <span class="reward-success glyphicon glyphicon-ok"></span>

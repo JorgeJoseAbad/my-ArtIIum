@@ -38,5 +38,6 @@ const offerSchema = new Schema({
 
 });
 
-const Offer = mongoose.model('Offer',offerSchema);
+const Offer = mongoose.model('Offer',offerSchema); //este es un constructor
+// que luego será instanciado var offer = new (Offer); creo
 module.exports = Offer;
