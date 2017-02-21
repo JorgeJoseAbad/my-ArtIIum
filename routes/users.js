@@ -19,6 +19,7 @@ router.get('/:username', ensureLoggedIn('/login'), (req, res, next) => {
   }, (err, user) => {
     if (err) return next(err);
     return res.render('users/user', {
+      user,
       req
     });
   });
@@ -35,9 +36,9 @@ router.get('/:username/edit', ensureLoggedIn('/login'), (req, res, next) => {
       return next(new Error("404"));
     }
     return res.render('users/edit', {
-      req,
-      user
-      // types: TYPES
+      user,
+      types: TYPES,
+      req
     });
   });
 });
@@ -53,7 +54,7 @@ router.post('/:username', ensureLoggedIn('/login'), (req, res, next) => {
   User.findOneAndUpdate(req.params.username, updates, (err, user) => {
     if (err) {
       return res.render('users/edit', {
-        artwork,
+        user,
         errors: user.errors
       });
     }

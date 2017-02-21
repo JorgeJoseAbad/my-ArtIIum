@@ -7,27 +7,21 @@
     <div class="col-sm-10">
       <h1><%= artwork.title %></h1>
       <h2 class="artwork-category"><%= artwork.category %></h2>
-      <p class="artwork-description"><%= artwork.description %></p>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-8">
-      <img class="artwork-image" src="<%= artwork.image %>">
+      <img class="artwork-image" src="<%= artwork.pic_path %>">
     </div>
     <div class="col-sm-4 artwork-info">
       <div class="artwork-progress">
-        <progress value="<%= artwork.totalPledged %>" max="<%= artwork.startBid %>"></progress>
+        <p><%= artwork.description %></p>
       </div>
       <div class="artwork-pledged">
-        <span class="artwork-total">$<%= artwork.totalPledged %></span><br>
-        <span class="light-text">
-          pledged of
-          $<%= artwork.startBid %></span> startBid
+        <h3 class="light-text">
+          Price
+          <%= artwork.startBid %>€</h3>
         </span>
-      </div>
-      <div class="artwork-backers">
-        <strong class="large-strong"><%= artwork.backerCount %></strong><br>
-        <span class="light-text">backers</span>
       </div>
       <div class="artwork-time">
         <strong class="large-strong"><%= artwork.timeRemaining.days %></strong><br>

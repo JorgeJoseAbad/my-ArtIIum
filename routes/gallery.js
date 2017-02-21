@@ -14,10 +14,10 @@ const {
   checkOwnership
 } = require('../middleware/artwork-authorization');
 
-
 router.get('/new', (req, res) => {
   res.render('gallery/new', {
-    types: TYPES
+    types: TYPES,
+    req
   });
 });
 
@@ -30,14 +30,16 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
     deadline: req.body.deadline,
     _creator: req.user._id,
     pic_path: req.body.pic_path,
-    pic_name: req.body.pic_name
+    // pic_name: req.body.pic_name
   });
 
-  newArtwork.save((err) => {
+  newArtwork.save((err, artwork) => {
     if (err) {
       res.render('gallery/new', {
+        err,
         artwork: newArtwork,
-        types: TYPES
+        types: TYPES,
+        req
       });
     } else {
       res.redirect(`/gallery/${newArtwork._id}`);
@@ -55,7 +57,8 @@ router.get('/:id', checkOwnership, (req, res, next) => {
         return next(err);
       }
       return res.render('gallery/show', {
-        artwork
+        artwork,
+        req
       });
     });
   });
@@ -71,7 +74,8 @@ router.get('/:id/edit', [ensureLoggedIn('/login'), authorizeArtwork], (req, res,
     }
     return res.render('gallery/edit', {
       artwork,
-      types: TYPES
+      types: TYPES,
+      req
     });
   });
 });
@@ -84,7 +88,6 @@ router.post('/:id', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, nex
     category: req.body.category,
     deadline: req.body.deadline,
     pic_path: req.body.pic_path,
-    pic_name: req.body.pic_name
   };
   Artwork.findByIdAndUpdate(req.params.id, updates, (err, artwork) => {
     if (err) {

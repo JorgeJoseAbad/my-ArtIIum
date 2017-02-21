@@ -32,12 +32,13 @@ const ArtworkSchema = new Schema({
   },
   pic_path: {
     type: String,
-    required: true
-  },
-  pic_name: {
-    type: String,
+    default: "http://theeyetravels.com/wp-content/uploads/2014/12/Beethoven-3.jpg",
     required: true
   }
+  // pic_name: {
+  //   type: String,
+  //   required: true
+  // }
 });
 
 ArtworkSchema.virtual('timeRemaining').get(function() {
