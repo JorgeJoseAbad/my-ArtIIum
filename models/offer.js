@@ -33,7 +33,6 @@ const offerSchema = new Schema({
   offerState: {
     type: String,
     enum: STATEOFFERS_TAGS,
-
   }
 
 });
