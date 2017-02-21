@@ -1,16 +1,20 @@
 <div class="container">
   <div class="row">
-
+    <div class="col-md-4">
       <p> Name:
         <%=req.user.username %>
       </p>
+    </div>
+    <div class="col-md-4">
       <p> Description:
         <%=req.user.description %>
       </p>
-      <div>foto de <%=req.user.username %>
+    </div>
+    <div class="col-md-4">
+        foto de <%=req.user.username %>
         <br>
         <img src="<%=`${req.user.pic_path}`%>"/>
-      </div>
+    </div>
       <!-- rutas ficticias en este momento -->
       <li> <a href="/edit"> Editar perfil </a> </li>
       <% if (req.user.isArtist) { %>
