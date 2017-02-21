@@ -13,70 +13,57 @@ const {
 // } = require('../middleware/artwork-authorization');
 
 /* GET users listing. */
-router.get('/:username', (req, res, next) => {
+router.get('/:username', ensureLoggedIn('/login'), (req, res, next) => {
   User.findOne({
-    username: {
-      $eq: ''
-    }
+    username: req.params.username
   }, (err, user) => {
     if (err) return next(err);
     return res.render('users/user', {
-      req: req
+      req
     });
   });
 });
 
-// router.get('/:id/edit', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
-//   Artwork.findById(req.params.id, (err, artwork) => {
-//     if (err) {
-//       return next(err);
-//     }
-//     if (!artwork) {
-//       return next(new Error("404"));
-//     }
-//     return res.render('gallery/edit', {
-//       artwork,
-//       types: TYPES
-//     });
-//   });
-// });
-//
-// router.post('/:id', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
-//   const updates = {
-//     title: req.body.title,
-//     startBid: req.body.startBid,
-//     description: req.body.description,
-//     category: req.body.category,
-//     deadline: req.body.deadline,
-//     pic_path: req.body.pic_path,
-//     pic_name: req.body.pic_name
-//   };
-//   Artwork.findByIdAndUpdate(req.params.id, updates, (err, artwork) => {
-//     if (err) {
-//       return res.render('gallery/edit', {
-//         artwork,
-//         errors: artwork.errors
-//       });
-//     }
-//     if (!artwork) {
-//       return next(new Error("404"));
-//     }
-//     return res.redirect(`/gallery/${artwork._id}`);
-//   });
-// });
+router.get('/:username/edit', ensureLoggedIn('/login'), (req, res, next) => {
+  User.findOne({
+    username: req.params.username
+  }, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return next(new Error("404"));
+    }
+    return res.render('users/edit', {
+      req,
+      user
+      // types: TYPES
+    });
+  });
+});
+
+router.post('/:username', ensureLoggedIn('/login'), (req, res, next) => {
+  const updates = {
+    username: req.body.username,
+    email: req.body.email,
+    description: req.body.description,
+    isArtist: req.body.isArtist,
+    pic_path: req.body.pic_path,
+  };
+  User.findOneAndUpdate(req.params.username, updates, (err, user) => {
+    if (err) {
+      return res.render('users/edit', {
+        artwork,
+        errors: user.errors
+      });
+    }
+    if (!user) {
+      return next(new Error("404"));
+    }
+    return res.redirect(`/users/${user._id}`);
+  });
+});
 
 module.exports = router;
 
 /*añado cosas para comentar*/
-
-
-const express  = require('express');
-const Artwork = require('../models/artwork');
-const TYPES    = require('../models/artwork-types');
-const router   = express.Router();
-const { ensureLoggedIn }  = require('connect-ensure-login');
-const {authorizeArtwork, checkOwnership} = require('../middleware/artwork-authorization');
-
-router.get('/new', (req, res) => {
-  res.render('gallery/new', { types: TYPES });
-});
