@@ -13,6 +13,7 @@ const flash = require("connect-flash");
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+const multer  = require('multer');
 
 mongoose.connect('mongodb://localhost/artiium');
 
@@ -81,7 +82,8 @@ passport.use('local-signup', new LocalStrategy({
             email,
             description,
             password,
-            isArtist
+            isArtist,
+            pic_path
           } = req.body;
           const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
           const newUser = new User({
@@ -89,7 +91,8 @@ passport.use('local-signup', new LocalStrategy({
             email,
             description,
             password: hashPass,
-            isArtist
+            isArtist,
+            pic_path
           });
 
           newUser.save((err) => {
