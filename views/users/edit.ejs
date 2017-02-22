@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-offset-3 col-sm-6 centered-form">
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="upload-photo">Browse...</label>
+        <input type="file" name="profileImage" placeholder="new photo" id="upload-photo">
+        <input type="submit" value="Save">
+      </form>
       <form action="/signup" method="post">
         <div class="form-group">
           <label for="username">Username</label>

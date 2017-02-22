@@ -4,6 +4,9 @@ const User = require('../models/user');
 const TYPES = require('../models/artwork-types');
 const router = express.Router();
 const multer = require('multer');
+const upload = multer({
+  dest: './public/uploads/'
+});
 const {
   ensureLoggedIn
 } = require('connect-ensure-login');
@@ -23,6 +26,21 @@ router.get('/:username', ensureLoggedIn('/login'), (req, res, next) => {
       req
     });
   });
+});
+
+router.post('/upload', ensureLoggedIn(), upload.single('profileImage'), (req, res) => {
+  pic_path = "uploads/" + req.file.filename;
+  userId = req.user._id;
+  User.findByIdAndUpdate(userId, {
+    pic_path
+  }, (err, product) => {
+    if (err) {
+      return next(err);
+    }
+    console.log("editado");
+    return res.redirect('users/edit');
+  });
+
 });
 
 router.get('/:username/edit', ensureLoggedIn('/login'), (req, res, next) => {
