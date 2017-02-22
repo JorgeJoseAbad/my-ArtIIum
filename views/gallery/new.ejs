@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 centered-form">
-      <form action="/gallery" method="post" enctype="multipart/form-data">
+    <div class="col-sm-offset-3 col-sm-6 centered-form">
+      <% if (typeof err !== 'undefined' ) {%>
+        <p> <%= err %> </p>
+      <% } %>
+      <form action="/gallery" method="post">
         <div class="form-group">
           <label for="title">Title</label>
           <input type="text" name="title" class="form-control" required>
         </div>
         <div class="form-group">
-          <label for="startBid">Start Bid</label>
+          <label for="startBid">Price</label>
           <input type="number" name="startBid" class="form-control" required>
         </div>
         <div class="form-group">
@@ -26,18 +29,11 @@
           <label for="deadline">Deadline</label>
           <input type="date" name="deadline" class="form-control" required>
         </div>
-        <section>
-          <label for="image">Image</label>
-          <input type="text" name="name" required>
-          <input type="file" name="file" required>
-        </section>
+
         <div class="form-group">
           <button type="submit">Create Artwork</button>
         </div>
       </form>
     </div>
-    <% if (typeof(errorMessage) != "undefined") { %>
-      <div class="error-message"><%= errorMessage %></div>
-    <% } %>
   </div>
 </div>

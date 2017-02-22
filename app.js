@@ -13,7 +13,8 @@ const flash = require("connect-flash");
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-const multer  = require('multer');
+const multer = require('multer');
+mongoose.Promise = require('bluebird');
 
 mongoose.connect('mongodb://localhost/artiium');
 

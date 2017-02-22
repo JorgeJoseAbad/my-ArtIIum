@@ -25,7 +25,7 @@ const UserSchema = new Schema({
   },
   pic_path: {
     type: String,
-    default: "https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97250&w=250&h=250"
+    default: "../images/user_color.png"
   },
   dateRegister: Date, //deberá hacerlo el sistema
 });

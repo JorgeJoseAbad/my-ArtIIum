@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 centered-form">
+    <div class="col-sm-offset-3 col-sm-6 centered-form">
       <form action="/signup" method="post">
         <div class="form-group">
           <label for="username">Username</label>
@@ -48,9 +48,11 @@
 -->
 
     </div>
+    <div class="col-sm-offset-3 col-sm-6 centered-form">
     <p class="account-message">
       Do you already have an account? <a href="/login">Login</a>
     </p>
+    </div>
     <% if (typeof(errorMessage) != "undefined") { %>
       <div class="error-message"><%= errorMessage %></div>
     <% } %>
