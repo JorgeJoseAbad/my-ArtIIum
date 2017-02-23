@@ -281,3 +281,16 @@ progress {
   box-shadow: none;
   border: 0;
 }
+
+.image-delete{
+  width: 200px;
+  height: 100px;
+}
+.image-delete img{
+  width: 50%;
+}
+
+.miniPhoto{
+  height: 24px;
+  width: 24px;
+}

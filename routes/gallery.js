@@ -23,7 +23,6 @@ router.get('/new', (req, res) => {
 
 router.post('/upload', ensureLoggedIn('/login'), upload.single('artworkImage'), (req, res) => {
   pic_path = "uploads/" + req.file.filename;
-  console.log(req.body);
   userId = req.body._id;
   Artwork.findByIdAndUpdate(userId, {
     pic_path
@@ -94,6 +93,58 @@ router.get('/:id/edit', [ensureLoggedIn('/login'), authorizeArtwork], (req, res,
     });
   });
 });
+
+/*added to delete artwork*/
+/*get to delete view*/
+router.get('/:id/delete', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
+  Artwork.findById(req.params.id, (err, artwork) => {
+    if (err) {
+      console.log("ERROR tras primer if");
+      return next(err);
+    }
+    if (!artwork) {
+      console.log("error tras segundo if");
+      return next(new Error("404"));
+    }
+    console.log("busca renderizar gallery/delete");
+    return res.render('gallery/delete', {
+      artwork,
+      types: TYPES,
+      req
+    });
+  });
+});
+
+/* post to delete*/
+router.post('/:id/delete', (req, res, next) => {
+  const id = req.params.id;
+  Artwork.findByIdAndRemove(id, (err, product) => {
+    if (err) {
+      return next(err);
+    }
+    return res.redirect('/user');
+  });
+});
+/*upper added to delete artwork*/
+
+/*get to buy page*/
+router.get('/:id/buy', ensureLoggedIn('/login'), (req, res, next) => {
+  Artwork.findById(req.params.id, (err, artwork) => {
+    if (err) {
+      return next(err);
+    }
+    if (!artwork) {
+      return next(new Error("404"));
+    }
+    return res.render('gallery/buy', {
+      artwork,
+      types: TYPES,
+      req
+    });
+  });
+});
+
+
 
 router.post('/:id', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
   const updates = {

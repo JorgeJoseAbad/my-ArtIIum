@@ -1,6 +1,7 @@
 <div class="container artwork-container">
   <div class="row">
     <div class="col-sm-2">
+      <img class="miniPhoto" src="/<%=req.user.pic_path%>"><br>
       By: <strong><%= artwork._creator.username%></strong>
     </div>
     <div class="col-sm-10">
@@ -29,9 +30,13 @@
         </span>
       </div>
       <% if (artworkIsCurrentUsers) { %>
-        <a class="btn backer-btn" href="/gallery/<%= artwork._id%>/edit">Edit This Project</a>
+        <a class="btn backer-btn" href="/gallery/<%= artwork._id%>/edit">Edit This artwork</a>
+
+        <br>
+        <a class="btn backer-btn" href="/gallery/<%= artwork._id%>/delete">Delete this artwork</a>
       <% } else { %>
-        <a class="btn backer-btn" href="#">Buy It!</a>
+
+        <a class="btn backer-btn" href="/gallery/<%= artwork._id%>/buy">Buy It!</a>
       <% } %>
     </div>
   </div>
