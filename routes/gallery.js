@@ -96,6 +96,7 @@ router.get('/:id/edit', [ensureLoggedIn('/login'), authorizeArtwork], (req, res,
 });
 
 /*added to delete artwork*/
+/*get to delete view*/
 router.get('/:id/delete',[ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
   Artwork.findById(req.params.id, (err, artwork) => {
     if (err) {
@@ -114,7 +115,7 @@ router.get('/:id/delete',[ensureLoggedIn('/login'), authorizeArtwork], (req, res
     });
   });
 });
-/*added to delete artwork*/
+
 /* post to delete*/
 router.post('/:id/delete', (req, res, next) => {
   const id = req.params.id;
@@ -123,6 +124,26 @@ router.post('/:id/delete', (req, res, next) => {
       return res.redirect('/user');
     });
 });
+/*upper added to delete artwork*/
+
+/*get to buy page*/
+router.get('/:id/buy',ensureLoggedIn('/login'), (req, res, next) => {
+  Artwork.findById(req.params.id, (err, artwork) => {
+    if (err) {
+      return next(err);
+    }
+    if (!artwork) {
+      return next(new Error("404"));
+    }
+    return res.render('gallery/buy', {
+      artwork,
+      types: TYPES,
+      req
+    });
+  });
+});
+
+
 
 router.post('/:id', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
   const updates = {

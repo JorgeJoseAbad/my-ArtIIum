@@ -39,7 +39,8 @@
         <a class="btn backer-btn" href="/gallery/<%= artwork._id%>/delete">Delete this artwork</a>
 <!-- added delete buttom -->
       <% } else { %>
-        <a class="btn backer-btn" href="#">Buy It!</a>
+        <!-- modied to buy art -->
+        <a class="btn backer-btn" href="/gallery/<%= artwork._id%>/buy">Buy It!</a>
       <% } %>
     </div>
   </div>
