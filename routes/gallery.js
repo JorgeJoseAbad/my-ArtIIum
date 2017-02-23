@@ -21,21 +21,20 @@ router.get('/new', (req, res) => {
   });
 });
 
-// router.post('/upload', ensureLoggedIn('/login'), upload.single('artworkImage'), (req, res) => {
-//   console.log("pasa por aqui");
-//   pic_path = "uploads/" + req.file.filename;
-//   userId = req.user._id;
-//   User.findByIdAndUpdate(userId, {
-//     pic_path
-//   }, (err, product) => {
-//     if (err) {
-//       return next(err);
-//     }
-//     console.log("editado");
-//     return res.redirect('/user');
-//   });
-//
-// });
+router.post('/upload', ensureLoggedIn('/login'), upload.single('artworkImage'), (req, res) => {
+  pic_path = "uploads/" + req.file.filename;
+  console.log("Aqui si");
+  userId = req.user._id;
+  User.findByIdAndUpdate(userId, {
+    pic_path
+  }, (err, image) => {
+    if (err) {
+      return next(err);
+    }
+    return res.redirect('/gallery');
+  });
+
+});
 
 router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
   const newArtwork = new Artwork({

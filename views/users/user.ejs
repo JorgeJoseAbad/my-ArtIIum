@@ -1,32 +1,47 @@
-<div class="container">
-  <div class="page-header">
-    <div class="row">
-      <div class="profile-image">
-        <img src="<%=`${req.user.pic_path}`%>"/>
-      </div>
-      <form action="/upload" method="post" enctype="multipart/form-data" class="upload-profile-pic">
-        <label for="upload-photo" class="upload-pic">Upload your Photo</label>
-        <input type="file" name="profileImage" id="upload-photo" class="form-control">
-        <input type="submit" value="Change it!" class="upload-pic-button">
-      </form>
-      <div class="col-md-4">
-        <p> Name:
-          <%=req.user.username %>
-        </p>
-      </div>
-      <div class="col-md-4">
-        <p> Description:
-          <%=req.user.description %>
-        </p>
-      </div>
-      <div class="col-md-4">
 
-        <!-- rutas ficticias en este momento -->
-      <h4> <a href="edit/<%=req.user.username %>"> Editar perfil </a> </h4>
-      <% if (req.user.isArtist) { %>
-            <h4><a href="/gallery/new"> Upload New Artwork </a> </h4>
-          <% } %>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6 centered-form">
+          <div class="col-md-4">
+
+            <form action="/upload" method="post" enctype="multipart/form-data" class="upload-profile-pic">
+              <label for="upload-photo" class="upload-pic">Upload your Photo</label>
+              <input type="file" name="profileImage" id="upload-photo" class="form-control">
+              <input type="submit" value="Change it!" class="upload-pic-button">
+            </form>
+             <div class="profil-avatar">
+                  <img src="<%=`${req.user.pic_path}`%>"/>
+              </div>
+
+
+
+             <div class="profil-data">
+                      <h3>
+                          <%=req.user.username %>
+                      </h3>
+                      <i>
+                          <%=req.user.description %>
+                      </i>
+                      <p>
+                          <%=req.user.email %>
+                      </p>
+                      <p>
+                          <% if (req.user.isArtist) { %>
+                              <b>Is an artist</b>
+                          <% } %>
+                      </p>
+                </div>
+
+               <div class="profil-links">
+                    <a href="<%=req.user.username %>/edit">Edit profile</a>
+                              <% if (req.user.isArtist) { %>
+                                <br>
+                    <a href="/gallery/new">Gallery new</a>
+                              <% } else { %>
+                              <% } %>
+                </div>
+
+         </div>
       </div>
-    </div>
   </div>
 </div>

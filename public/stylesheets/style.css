@@ -1,6 +1,6 @@
 body{
   font-family: 'Titillium Web', sans-serif;
-  font-size: 10px;
+  /*font-size: 10px;*/
 }
 
 .main-container {
@@ -79,6 +79,30 @@ nav.navbar {
   text-decoration: none;
   transition: ease-in-out 1s;
   color: #00A1FF;
+}
+
+.profil-data {
+  font-size:16px;
+  width: 280px;
+  text-align: justify;
+}
+
+.profil-avatar{
+  position: absolute;
+  left: 310px;
+  width: 100px;
+  height: 100px;
+  float: right;
+}
+
+.profil-avatar img{
+  width: 100%;
+  border-radius: 50%;
+}
+
+.profil-links{
+  position: relative;
+  text-align: center;
 }
 
 .home-heading {
@@ -199,21 +223,6 @@ progress {
 
 .artwork-description {
   padding-right: 275px;
-}
-
-.col-md-4{
-  font-size:20px;
-  color: blue;
-}
-
-.profile-image {
-  width: 230px;
-  margin: 30px;
-}
-
-.profile-image > img {
-  max-width: 100%;
-  border-radius: 50%;
 }
 
 
