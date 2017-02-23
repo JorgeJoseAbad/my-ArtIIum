@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row">
       <div class="col-sm-offset-3 col-sm-6 centered-form">
-          <h2>Are you sure you want delete it?</p>
+          <h2>Are you sure you want delete it?</h2>
           <div class="image-delete">
-            
+
             <img src="<%= artwork.pic_path %>">
 
           </div>
-          <a class="btn backer-btn" href="/:id">Eliminar</a>
+                <!-- Other HTML-->
+              <form action=" /gallery/<%= artwork._id%>/delete" method="POST">
+              <button type="submit">Delete artwork</button>
+            </form>
 
       </div>
   </div>

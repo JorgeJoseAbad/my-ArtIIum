@@ -115,6 +115,14 @@ router.get('/:id/delete',[ensureLoggedIn('/login'), authorizeArtwork], (req, res
   });
 });
 /*added to delete artwork*/
+/* post to delete*/
+router.post('/:id/delete', (req, res, next) => {
+  const id = req.params.id;
+  Artwork.findByIdAndRemove(id, (err, product) => {
+      if (err){ return next(err); }
+      return res.redirect('/user');
+    });
+});
 
 router.post('/:id', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
   const updates = {
