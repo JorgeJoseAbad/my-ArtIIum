@@ -81,32 +81,48 @@ nav.navbar {
   color: #00A1FF;
 }
 
-.profil-data {
+.profile-data {
   font-size:16px;
-  width: 280px;
+  text-align: center;
+}
+
+.profile-options{
+  padding-left: 100px;
+  padding-top: 30px;
+}
+
+.profile-name, .profile-email {
+  padding: 15px;
+}
+
+.profile-name{
+  border-bottom: 2px solid black;
+}
+
+.profile-description {
   text-align: justify;
+  padding: 20px;
 }
 
-.profil-avatar{
-  position: absolute;
-  left: 310px;
-  width: 100px;
-  height: 100px;
+.profile-avatar{
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  float: right;
   overflow: hidden;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.profil-avatar img{
+.profile-avatar img{
   width: auto;
   display: inline;
   margin: 0 auto;
   height: 100%;
 }
 
-.profil-links{
-  position: relative;
-  text-align: center;
+.btn-profile{
+  width: 140px;
+  margin-top: 15px;
 }
 
 .home-heading {
@@ -141,7 +157,7 @@ nav.navbar {
 }
 
 .home-artwork-box {
-  height: 300px;
+  height: 600px;
   margin: 30px 4%;
   padding: 0;
   text-align: center;
@@ -149,8 +165,8 @@ nav.navbar {
 }
 
 .home-artwork-box img {
-  width: 100%;
-  height: 45%;
+  width: 90%;
+  height: 150px;
 }
 
 .form-group{
@@ -168,7 +184,8 @@ nav.navbar {
 
 .artwork-info-wrapper > .description {
   display: block;
-  margin-top: 20px;
+  margin: 20px;
+
 }
 
 .artwork-info-wrapper > .title {
@@ -242,9 +259,21 @@ progress {
   padding-right: 275px;
 }
 
+.image-delete{
+  width: 200px;
+  height: 100px;
+}
+.image-delete img{
+  width: 50%;
+}
+
+.miniPhoto{
+  height: 24px;
+  width: 24px;
+}
 
 /* public/stylesheets/styles.css todo referido a rewards, ojo */
-.reward-wrapper {
+/*.reward-wrapper {
   background-color: #F8F9FD;
   float: none;
   margin: 0 auto;
@@ -280,17 +309,4 @@ progress {
   color: white;
   box-shadow: none;
   border: 0;
-}
-
-.image-delete{
-  width: 200px;
-  height: 100px;
-}
-.image-delete img{
-  width: 50%;
-}
-
-.miniPhoto{
-  height: 24px;
-  width: 24px;
-}
+}*/

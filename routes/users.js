@@ -60,19 +60,25 @@ router.get('/edit/:username', ensureLoggedIn('/login'), (req, res, next) => {
   });
 });
 
-router.post('/edit/:username', ensureLoggedIn('/login'), (req, res, next) => {
+router.post('/edit/:id', ensureLoggedIn('/login'), (req, res, next) => {
   const updates = {
     username: req.body.username,
     email: req.body.email,
     description: req.body.description,
     isArtist: req.body.isArtist,
-    pic_path: req.body.pic_path,
   };
-  User.findOneAndUpdate(req.params.username, updates, (err, user) => {
+  User.findByIdAndUpdate(req.params.id, updates, (err, user) => {
     if (err) {
-      return next(err);
+      return res.render('users/', {
+        user,
+        errors: user.errors
+      });
     }
-    return res.redirect("/user");
+    if (!user) {
+      return next(new Error("404"));
+    }
+    console.log("AH PASAAAAA POR AQUIOIII");
+    return res.redirect(`/${user.username}`);
   });
 });
 

@@ -22,7 +22,7 @@ router.get('/new', (req, res) => {
 });
 
 router.post('/upload', ensureLoggedIn('/login'), upload.single('artworkImage'), (req, res) => {
-  pic_path = "uploads/" + req.file.filename;
+  pic_path = "/uploads/" + req.file.filename;
   userId = req.body._id;
   Artwork.findByIdAndUpdate(userId, {
     pic_path
@@ -94,6 +94,29 @@ router.get('/:id/edit', [ensureLoggedIn('/login'), authorizeArtwork], (req, res,
   });
 });
 
+router.post('/:id', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
+  const updates = {
+    title: req.body.title,
+    startBid: req.body.startBid,
+    description: req.body.description,
+    category: req.body.category,
+    deadline: req.body.deadline,
+    pic_path: req.body.pic_path,
+  };
+  Artwork.findByIdAndUpdate(req.params.id, updates, (err, artwork) => {
+    if (err) {
+      return res.render('gallery/edit', {
+        artwork,
+        errors: artwork.errors
+      });
+    }
+    if (!artwork) {
+      return next(new Error("404"));
+    }
+    return res.redirect(`/gallery/${artwork._id}`);
+  });
+});
+
 /*added to delete artwork*/
 /*get to delete view*/
 router.get('/:id/delete', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
@@ -141,31 +164,6 @@ router.get('/:id/buy', ensureLoggedIn('/login'), (req, res, next) => {
       types: TYPES,
       req
     });
-  });
-});
-
-
-
-router.post('/:id', [ensureLoggedIn('/login'), authorizeArtwork], (req, res, next) => {
-  const updates = {
-    title: req.body.title,
-    startBid: req.body.startBid,
-    description: req.body.description,
-    category: req.body.category,
-    deadline: req.body.deadline,
-    pic_path: req.body.pic_path,
-  };
-  Artwork.findByIdAndUpdate(req.params.id, updates, (err, artwork) => {
-    if (err) {
-      return res.render('gallery/edit', {
-        artwork,
-        errors: artwork.errors
-      });
-    }
-    if (!artwork) {
-      return next(new Error("404"));
-    }
-    return res.redirect(`/gallery/${artwork._id}`);
   });
 });
 
