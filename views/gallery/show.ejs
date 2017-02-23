@@ -1,8 +1,8 @@
 <div class="container artwork-container">
   <div class="row">
     <div class="col-sm-2">
-      <img src="<%= artwork._creator.pic_path  %>"><br>
-      By: <strong><%= artwork._creator.username%></strong>
+        <img class="miniPhoto" src="/<%=req.user.pic_path%>"><br>
+        By: <strong><%= artwork._creator.username%></strong>
     </div>
     <div class="col-sm-10">
       <h1><%= artwork.title %></h1>
@@ -33,7 +33,11 @@
         <span class="light-text"><%= artwork.timeRemaining.unit  %> to go.</span>
       </div>
       <% if (artworkIsCurrentUsers) { %>
-        <a class="btn backer-btn" href="/gallery/<%= artwork._id%>/edit">Edit This Project</a>
+        <a class="btn backer-btn" href="/gallery/<%= artwork._id%>/edit">Edit This artwork</a>
+<!-- added delete buttom -->
+        <br>
+        <a class="btn backer-btn" href="/gallery/<%= artwork._id%>/delete">Delete this artwork</a>
+<!-- added delete buttom -->
       <% } else { %>
         <a class="btn backer-btn" href="#">Buy It!</a>
       <% } %>
