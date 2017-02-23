@@ -146,9 +146,10 @@ const authRoutes = require('./routes/authentication');
 const artworkRoutes = require('./routes/gallery');
 const usersRoutes = require('./routes/users');
 // app.use('/', index);
-app.use('/gallery', artworkRoutes);
+
 app.use('/', authRoutes);
 app.use('/', usersRoutes);
+app.use('/gallery', artworkRoutes);
 
 
 // catch 404 and forward to error handler

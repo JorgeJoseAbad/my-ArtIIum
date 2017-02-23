@@ -22,36 +22,13 @@
           <label for="isArtist">Are You Artist?</label>
           <input type="checkbox" name="isArtist" value="isArtist">
         </div>
-
-        <%# <!--intento meter el logo-->
-        <div class="form-group">
-          <h2>Upload your photo</h2>
-
-          <label for="pic_path">Pic path</label>
-          <input type="file" name="pic_path">
-
-        </div>%>
-
-
-
-        <button type="submit">Signup</button>
+        <p class="account-message">
+          Do you already have an account? <a href="/login">Login</a>
+        </p>
+        <button class="btn btn-primary" type="submit">Signup</button>
       </form>
-
-
-      <!--upload foto
-      <h2>Upload your photo</h2>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-          <input type="text" name="name">
-          <input type="file" name="file">
-          <input type="submit" value="Save">
-        </form>
--->
-
     </div>
     <div class="col-sm-offset-3 col-sm-6 centered-form">
-    <p class="account-message">
-      Do you already have an account? <a href="/login">Login</a>
-    </p>
     </div>
     <% if (typeof(errorMessage) != "undefined") { %>
       <div class="error-message"><%= errorMessage %></div>

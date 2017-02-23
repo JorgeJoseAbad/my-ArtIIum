@@ -33,10 +33,10 @@
                 </div>
 
                <div class="profil-links">
-                    <a href="<%=req.user.username %>/edit">Edit profile</a>
+                    <a href="edit/<%=req.user.username %>">Edit profile</a>
                               <% if (req.user.isArtist) { %>
                                 <br>
-                    <a href="/gallery/new">Gallery new</a>
+                    <a href="gallery/new">Gallery new</a>
                               <% } else { %>
                               <% } %>
                 </div>

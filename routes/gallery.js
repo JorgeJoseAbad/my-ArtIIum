@@ -23,15 +23,15 @@ router.get('/new', (req, res) => {
 
 router.post('/upload', ensureLoggedIn('/login'), upload.single('artworkImage'), (req, res) => {
   pic_path = "uploads/" + req.file.filename;
-  console.log("Aqui si");
-  userId = req.user._id;
-  User.findByIdAndUpdate(userId, {
+  console.log(req.body);
+  userId = req.body._id;
+  Artwork.findByIdAndUpdate(userId, {
     pic_path
   }, (err, image) => {
     if (err) {
       return next(err);
     }
-    return res.redirect('/gallery');
+    return res.redirect(`/gallery/${req.body._id}`);
   });
 
 });
@@ -62,7 +62,7 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
   });
 });
 
-router.get('/:id', checkOwnership, (req, res, next) => {
+router.get('/:id', ensureLoggedIn('/login'), checkOwnership, (req, res, next) => {
   Artwork.findById(req.params.id, (err, artwork) => {
     if (err) {
       return next(err);

@@ -26,10 +26,10 @@ const ArtworkSchema = new Schema({
     type: Number,
     required: true
   },
-  deadline: {
-    type: Date,
-    required: true
-  },
+  // deadline: {
+  //   type: Date,
+  //   required: true
+  // },
   pic_path: {
     type: String,
     default: "http://theeyetravels.com/wp-content/uploads/2014/12/Beethoven-3.jpg",

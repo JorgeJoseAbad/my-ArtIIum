@@ -72,7 +72,7 @@ router.post('/edit/:username', ensureLoggedIn('/login'), (req, res, next) => {
     if (err) {
       return next(err);
     }
-    return res.redirect("/profile");
+    return res.redirect("/user");
   });
 });
 

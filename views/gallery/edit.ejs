@@ -45,10 +45,7 @@
               <% } %>
             <%  }) %>
           </select>
-        </div>
-        <div class="form-group">
-          <label for="deadline">Deadline</label>
-          <input type="date" name="deadline" class="form-control" value="<%= artwork.inputFormattedDate %>">
+            <input type="hidden" name="pic_path" class="form-control" value="<%= artwork.pic_path %>">
         </div>
         <div class="form-group">
           <button type="submit">Update Artwork</button>
