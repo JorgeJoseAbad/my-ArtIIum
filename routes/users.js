@@ -4,7 +4,7 @@ const User = require('../models/user');
 const TYPES = require('../models/artwork-types');
 const router = express.Router();
 const multer = require('multer');
-const upload = multer({
+let upload = multer({
   dest: './public/uploads/'
 });
 const {
@@ -28,22 +28,21 @@ router.get('/:username', ensureLoggedIn('/login'), (req, res, next) => {
   });
 });
 
-router.post('/upload', ensureLoggedIn(), upload.single('profileImage'), (req, res) => {
+router.post('/upload', ensureLoggedIn('/login'), upload.single('profileImage'), (req, res) => {
   pic_path = "uploads/" + req.file.filename;
   userId = req.user._id;
   User.findByIdAndUpdate(userId, {
     pic_path
-  }, (err, product) => {
+  }, (err, image) => {
     if (err) {
       return next(err);
     }
-    console.log("editado");
-    return res.redirect('users/edit');
+    return res.redirect('/user');
   });
 
 });
 
-router.get('/:username/edit', ensureLoggedIn('/login'), (req, res, next) => {
+router.get('/edit/:username', ensureLoggedIn('/login'), (req, res, next) => {
   User.findOne({
     username: req.params.username
   }, (err, user) => {
@@ -61,7 +60,7 @@ router.get('/:username/edit', ensureLoggedIn('/login'), (req, res, next) => {
   });
 });
 
-router.post('/:username', ensureLoggedIn('/login'), (req, res, next) => {
+router.post('/edit/:username', ensureLoggedIn('/login'), (req, res, next) => {
   const updates = {
     username: req.body.username,
     email: req.body.email,
@@ -71,15 +70,9 @@ router.post('/:username', ensureLoggedIn('/login'), (req, res, next) => {
   };
   User.findOneAndUpdate(req.params.username, updates, (err, user) => {
     if (err) {
-      return res.render('users/edit', {
-        user,
-        errors: user.errors
-      });
+      return next(err);
     }
-    if (!user) {
-      return next(new Error("404"));
-    }
-    return res.redirect(`/users/${user._id}`);
+    return res.redirect("/profile");
   });
 });
 

@@ -3,9 +3,9 @@ const Artwork = require('../models/artwork');
 const TYPES = require('../models/artwork-types');
 const router = express.Router();
 const multer = require('multer');
-// var upload = multer({
-//   dest: './public/uploads/'
-// });
+let upload = multer({
+  dest: './public/uploads/'
+});
 const {
   ensureLoggedIn
 } = require('connect-ensure-login');
@@ -20,6 +20,22 @@ router.get('/new', (req, res) => {
     req
   });
 });
+
+// router.post('/upload', ensureLoggedIn('/login'), upload.single('artworkImage'), (req, res) => {
+//   console.log("pasa por aqui");
+//   pic_path = "uploads/" + req.file.filename;
+//   userId = req.user._id;
+//   User.findByIdAndUpdate(userId, {
+//     pic_path
+//   }, (err, product) => {
+//     if (err) {
+//       return next(err);
+//     }
+//     console.log("editado");
+//     return res.redirect('/user');
+//   });
+//
+// });
 
 router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
   const newArtwork = new Artwork({

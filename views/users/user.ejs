@@ -1,28 +1,30 @@
 <div class="container">
   <div class="page-header">
     <div class="row">
-    <div class="col-md-4">
-      <p> Name:
-        <%=req.user.username %>
-      </p>
-    </div>
-    <div class="col-md-4">
-      <p> Description:
-        <%=req.user.description %>
-      </p>
-    </div>
-    <div class="col-md-4">
-        foto de <%=req.user.username %>
-        <br>
+      <div class="profile-image">
         <img src="<%=`${req.user.pic_path}`%>"/>
+      </div>
+      <form action="/upload" method="post" enctype="multipart/form-data" class="upload-profile-pic">
+        <label for="upload-photo" class="upload-pic">Upload your Photo</label>
+        <input type="file" name="profileImage" id="upload-photo" class="form-control">
+        <input type="submit" value="Change it!" class="upload-pic-button">
+      </form>
+      <div class="col-md-4">
+        <p> Name:
+          <%=req.user.username %>
+        </p>
+      </div>
+      <div class="col-md-4">
+        <p> Description:
+          <%=req.user.description %>
+        </p>
+      </div>
+      <div class="col-md-4">
 
-      <!-- rutas ficticias en este momento -->
-      <li> <a href="<%=req.user.username %>/edit"> Editar perfil </a> </li>
+        <!-- rutas ficticias en este momento -->
+      <h4> <a href="edit/<%=req.user.username %>"> Editar perfil </a> </h4>
       <% if (req.user.isArtist) { %>
-            <li> <a href="/gallery/new"> Gallery new </a> </li>
-
-          <% } else { %>
-
+            <h4><a href="/gallery/new"> Upload New Artwork </a> </h4>
           <% } %>
       </div>
     </div>

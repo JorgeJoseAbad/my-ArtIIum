@@ -1,5 +1,6 @@
 body{
   font-family: 'Titillium Web', sans-serif;
+  font-size: 10px;
 }
 
 .main-container {
@@ -30,10 +31,13 @@ nav.navbar {
 
 .nav > li > a {
   color: #00499B;
+  font-size: 1.8rem;
 }
 
 .nav > li > a:hover {
   background-color: inherit;
+  transition: ease-in-out 1s;
+  color: #00A1FF;
 }
 
 .nav > li.nav-logo {
@@ -44,20 +48,37 @@ nav.navbar {
   margin-left: -10%;
 }
 
+.nav-image-profile {
+  width: 30px;
+  margin: 10px 0 10px 30px;
+}
+
+.nav-image-profile > img {
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.logo-image{
+  position: absolute;
+  float: left;
+}
+
 .nav-logo-image {
   height: 17px;
-  width: 100%;
+  margin: 15px 15px 15px 25px;
 }
 
 .btn-logout {
   color: #00499B;
-  padding-top: 14px;
+  padding-top: 12px;
   padding-bottom: 14px;
+  font-size: 1.8rem;
 }
 
 .btn-logout:hover {
   text-decoration: none;
-  color: #00499B;
+  transition: ease-in-out 1s;
+  color: #00A1FF;
 }
 
 .home-heading {
@@ -95,6 +116,10 @@ nav.navbar {
 .home-artwork-box img {
   width: 100%;
   height: 45%;
+}
+
+.form-group{
+  font-size: 1.8rem;
 }
 
 .artwork-info-wrapper {
@@ -179,6 +204,16 @@ progress {
 .col-md-4{
   font-size:20px;
   color: blue;
+}
+
+.profile-image {
+  width: 230px;
+  margin: 30px;
+}
+
+.profile-image > img {
+  max-width: 100%;
+  border-radius: 50%;
 }
 
 
