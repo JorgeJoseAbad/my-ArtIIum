@@ -22,14 +22,14 @@
         </div>
         <div class="form-group">
           <label for="category">Category</label><br>
-          <select name="category" id="category">
+          <select name="category" class="custom-select btn-primary" id="category">
             <% types.forEach((category) => { %>
               <option type="text" value="<%= category %>" class="form-control"><%= category %></option>
             <%  }) %>
           </select>
         </div>
         <div class="form-group">
-          <button type="submit">Create Artwork</button>
+          <button class="btn btn-primary" type="submit">Create Artwork</button>
         </div>
       </form>
     </div>

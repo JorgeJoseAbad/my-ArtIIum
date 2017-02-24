@@ -1,7 +1,7 @@
 <div class="container artwork-container">
   <div class="row">
     <div class="col-sm-2">
-      <img class="miniPhoto" src="/<%=req.user.pic_path%>"><br>
+      <img class="miniPhoto" src="/<%=artwork._creator.pic_path%>"><br>
       By: <strong><%= artwork._creator.username%></strong>
     </div>
     <div class="col-sm-10">
@@ -11,7 +11,7 @@
   </div>
   <div class="row">
     <div class="col-sm-8">
-      <img class="artwork-image" src="/<%= artwork.pic_path %>">
+      <img class="artwork-image" src="<%= artwork.pic_path %>">
     </div>
     <div class="col-sm-4 artwork-info">
       <form action="upload" method="post" enctype="multipart/form-data" class="">

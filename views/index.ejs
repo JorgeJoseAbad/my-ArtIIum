@@ -3,7 +3,7 @@
     <div class="home-heading-wrapper">
       <img class="logo-claim" src="/images/logo-claim.svg" alt="Artiium Logo and claim">
       <h2>Artist thrive here</h2>
-      <h3>The place where you can bid up for artworks or auction your creations</h3>
+      <h3>The place where you can buy the better artworks or auction your creations</h3>
     </div>
   </div>
 </div>
@@ -13,12 +13,17 @@
 <div class="artwork-row row">
   <% gallery.forEach((artwork) => { %>
     <div class="col-sm-3 home-artwork-box">
-      <img src="<%= artwork.pic_path %>">
+      <a class="artwork-gallery-image" href="/gallery/<%= artwork._id %>">
+        <img src="<%= artwork.pic_path %>">
+      </a>
+      <h3 class=""><%= artwork.startBid %>€</h3>
       <div class="artwork-info-wrapper">
         <a class="title" href="/gallery/<%= artwork._id %>">
-          <strong><%= artwork.title %></strong>
-        </a><br>
-         <span class="light-text">by <%= artwork._creator.username %></span><br>
+          <h3><%= artwork.title %></h3>
+        </a>
+        <h4><%= artwork.category %></h4>
+        <span class="light-text">by <%= artwork._creator.username %></span>
+
         <p class="light-text description"><%= artwork.description %></p>
       </div>
     </div>
