@@ -16,12 +16,4 @@ se incorporan además con características como el precio de salida, posteriorme
 
 Tecnologías empleadas: JS, CSS, HTML, Node.js, Bower, MongoDB, Mongoose, Express, Passport.
 
-Tareas en proceso, tarea de maduración general. En particular:
--Mejoras front-end y back-end. Maduración.
--Mejora portabilidad.
--Incremento de opciones para los usuarios
--Incorporación aportaciones UX/UI.
--Gestión BBDD offers.
--Incorporación e Implementación de pasarelas seguras de pago.
--Incorporación de mayor complejidad en transacciones (subastas..)
--Y muchas más...
+Tareas en proceso, tarea de maduración general. En particular: -Mejoras front-end y back-end. Maduración. -Mejora portabilidad. -Incremento de opciones para los usuarios -Incorporación aportaciones UX/UI. -Gestión BBDD offers. -Incorporación e Implementación de pasarelas seguras de pago. -Incorporación de mayor complejidad en transacciones (subastas..) -Y muchas más...
