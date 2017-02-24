@@ -13,18 +13,13 @@
 <div class="artwork-row row">
   <% gallery.forEach((artwork) => { %>
     <div class="col-sm-3 home-artwork-box">
-      <a class="artwork-gallery-image" href="/gallery/<%= artwork._id %>">
-        <img src="<%= artwork.pic_path %>">
-      </a>
-      <h3 class=""><%= artwork.startBid %>€</h3>
+      <div class="imagebox" style="background-image:url('<%= artwork.pic_path %>')">
       <div class="artwork-info-wrapper">
-        <a class="title" href="/gallery/<%= artwork._id %>">
-          <h3><%= artwork.title %></h3>
+        <a href="/gallery/<%= artwork._id %>">
+          <h2 class="title"><%= artwork.title %></h3>
         </a>
-        <h4><%= artwork.category %></h4>
-        <span class="light-text">by <%= artwork._creator.username %></span>
-
-        <p class="light-text description"><%= artwork.description %></p>
+        <p class="created-by"><span class="price"><%= artwork.startBid %>€</span> - by <%= artwork._creator.username %></p>
+      </div>
       </div>
     </div>
   <%  }) %>
