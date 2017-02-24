@@ -5,11 +5,13 @@
   "scripts": {
     "start": "node ./bin/www",
     "start-dev": "nodemon ./bin/www",
-    "debug": "nodemon --inspect --debug ./bin/www"
+    "debug": "nodemon --inspect --debug ./bin/www",
+    "postinstall": "bower install"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "~1.16.0",
+    "bower": "^1.8.0",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^1.3.2",
