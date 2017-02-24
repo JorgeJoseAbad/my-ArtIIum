@@ -16,7 +16,7 @@ se incorporan además con características como el precio de salida, posteriorme
 
 Tecnologías empleadas: JS, CSS, HTML, Node.js, Bower, MongoDB, Mongoose, Express, Passport.
 
-Tareas pendientes, tarea de maduración general. En particular:
+Tareas en proceso, tarea de maduración general. En particular:
 -Mejoras front-end y back-end. Maduración.
 -Mejora portabilidad.
 -Incremento de opciones para los usuarios
