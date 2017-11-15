@@ -313,6 +313,10 @@ progress {
   background-position: center;
 }
 
+.show-options{
+  margin-top: 2px;
+}
+
 /* public/stylesheets/styles.css todo referido a rewards, ojo */
 /*.reward-wrapper {
   background-color: #F8F9FD;

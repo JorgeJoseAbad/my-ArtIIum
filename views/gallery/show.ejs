@@ -22,25 +22,31 @@
     </div>
 
     <div class="col-sm-6 artwork-info">
-      <% if (artworkIsCurrentUsers) { %>
-        <form action="upload" method="post" enctype="multipart/form-data" class="">
-          <label for="upload-photo" class="">Upload your Photo</label>
-          <input type="file" name="artworkImage" id="upload-photo" class="form-control">
-          <input type="hidden" value="<%= artwork._id%>" name="_id" id="upload-photo" class="form-control">
-          <button class="btn btn-primary" type="submit" value="Upload an Artwork Photo!">Upload an Artwork Photo!</button>
-        </form>
-      <% } %>
+
       <div class="artwork-progress">
         <p><%= artwork.description %></p>
       </div>
+
       <% if (artworkIsCurrentUsers) { %>
-        <a class="btn btn-primary" href="/gallery/<%= artwork._id%>/edit">Edit This artwork</a>
 
-        <a class="btn btn-primary" href="/gallery/<%= artwork._id%>/delete">Delete this artwork</a>
-      <% } else { %>
+          <h3>
+            <%= artwork._creator.username%>, you can update arwork:
+          </h3>
+          <form action="upload" method="post" enctype="multipart/form-data" class="">
+            <label for="upload-photo" class="">Upload new artwork photo</label>
+            <input type="file" name="artworkImage" id="upload-photo" class="form-control">
+            <input type="hidden" value="<%= artwork._id%>" name="_id" id="upload-photo" class="form-control">
+            <button class="btn btn-primary show-options" type="submit" value="Upload">Upload</button>
+          </form>
+            <a class="btn btn-primary show-options" href="/gallery/<%= artwork._id%>/edit">Edit This artwork</a>
+            <br>
+            <a class="btn btn-primary show-options" href="/gallery/<%= artwork._id%>/delete">Delete this artwork</a>
+          <% } else { %>
+            <br>
+            <a class="btn btn-primary show-options" href="/gallery/<%= artwork._id%>/buy">Buy It!</a>
+          <% } %>
 
-        <a class="btn btn-primary" href="/gallery/<%= artwork._id%>/buy">Buy It!</a>
-      <% } %>
+
     </div>
   </div>
 </div>
