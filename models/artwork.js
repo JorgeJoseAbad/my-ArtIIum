@@ -32,8 +32,13 @@ const ArtworkSchema = new Schema({
   // },
   pic_path: {
     type: String,
-    default: "http://theeyetravels.com/wp-content/uploads/2014/12/Beethoven-3.jpg",
+    default: "https://theeyetravels.com/wp-content/uploads/2014/12/Beethoven-3.jpg",
     required: true
+  },
+}, {
+  timestamps: {
+    createdAt: "created_at",
+    updatedAt: "updated_at"
   }
   // pic_name: {
   //   type: String,
@@ -41,6 +46,7 @@ const ArtworkSchema = new Schema({
   // }
 });
 
+//mongoose virtuals
 ArtworkSchema.virtual('timeRemaining').get(function() {
   let remaining = moment(this.deadline).fromNow(true).split(' ');
   let [days, unit] = remaining;
@@ -54,6 +60,7 @@ ArtworkSchema.virtual('inputFormattedDate').get(function() {
   return moment(this.deadline).format('DD-MM-YYYY');
 });
 
+//create method for arworkShema
 ArtworkSchema.methods.belongsTo = function(user) {
   return this._creator.equals(user._id);
 };

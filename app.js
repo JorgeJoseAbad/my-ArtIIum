@@ -14,10 +14,16 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const multer = require('multer');
+const index = require('./routes/index');
+const authRoutes = require('./routes/authentication');
+const artworkRoutes = require('./routes/gallery');
+const usersRoutes = require('./routes/users');
+
 mongoose.Promise = require('bluebird');
 
 mongoose.connect('mongodb://localhost/artiium');
 
+console.log("in app.js");
 
 const app = express();
 // view engine setup
@@ -61,7 +67,8 @@ passport.deserializeUser((id, cb) => {
 });
 
 // Signing Up
-passport.use('local-signup', new LocalStrategy({
+passport.use('local-signup', new LocalStrategy(
+  {
     passReqToCallback: true
   },
   (req, username, password, next) => {
@@ -141,15 +148,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// const index = require('./routes/index');
-const authRoutes = require('./routes/authentication');
-const artworkRoutes = require('./routes/gallery');
-const usersRoutes = require('./routes/users');
-// app.use('/', index);
 
-app.use('/', authRoutes);
-app.use('/', usersRoutes);
-app.use('/gallery', artworkRoutes);
+
+app.use('/', authRoutes); //'./routes/authentication'
+app.use('/', usersRoutes); //./routes/users'
+app.use('/', index); //'./routes/index'
+app.use('/gallery', artworkRoutes);//'./routes/gallery'
 
 
 // catch 404 and forward to error handler

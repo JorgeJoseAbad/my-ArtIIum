@@ -1,12 +1,16 @@
 <div class="container">
   <div class="row">
       <div class="col-sm-offset-3 col-sm-6 centered-form">
-          <h1>Now you are a happy buyer of an artWork!!!</h1>
-          <div class="image-delete">
+          <h1><b><%=req.user.username%></b>: Now you are a happy buyer of an artWork!!!</h1>
+            <h3>A superb art work by the famous artist <%=artwork._creator.username%>: <%=artwork._creator.description%></h3>
+
+            <h4>At a cost of: <%=artwork.startBid%> - €</h4>
+          <div class="image-buy">
 
             <img src="<%= artwork.pic_path %>">
 
           </div>
+
 
       </div>
   </div>

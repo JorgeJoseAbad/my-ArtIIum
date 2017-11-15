@@ -28,6 +28,11 @@ const UserSchema = new Schema({
     default: "../images/user_color.png"
   },
   dateRegister: Date, //deberá hacerlo el sistema
+}, {
+  timestamps: {
+    createdAt: "created_at",
+    updatedAt: "updated_at"
+  }
 });
 
 const User = mongoose.model('User', UserSchema);

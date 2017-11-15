@@ -7,6 +7,8 @@ const { authorizeArtwork }   = require('../middleware/artwork-authorization');
 const router                  = express.Router();
 const ObjectId                = require('mongoose').Types.ObjectId;
 
+console.log("in offers.js");
+
 /* original modelo
 router.get('/campaigns/:id/rewards', (req, res, next) => {
   Campaign

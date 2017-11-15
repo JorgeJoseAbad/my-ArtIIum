@@ -35,6 +35,11 @@ const offerSchema = new Schema({
     enum: STATEOFFERS_TAGS,
   }
 
+}, {
+  timestamps: {
+    createdAt: "created_at",
+    updatedAt: "updated_at"
+  }
 });
 
 const Offer = mongoose.model('Offer', offerSchema); //este es un constructor

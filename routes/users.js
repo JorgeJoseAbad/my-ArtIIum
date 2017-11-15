@@ -15,6 +15,8 @@ const {
 //   checkOwnership
 // } = require('../middleware/artwork-authorization');
 
+console.log("in users.js");
+
 /* GET users listing. */
 router.get('/:username', ensureLoggedIn('/login'), (req, res, next) => {
   User.findOne({

@@ -1,19 +1,19 @@
 # Artiium
 Artwork Market
 
-Mercado de arte. Los usuarios pueden registrarse y en función de su pertenencia
-a una de las dos categorias básicas (user normal o comprador, y user artista) tiene
-unas opciones diferentes
+my-Artiium is a personal reworking of original Artiium By Gonzalo Orio and Jorge Abad.
 
-Artista: Puede subir, modificar, eliminar y ver obras de arte.
-Comprador: Puede ver y comprar obras de arte.
+Art market users can register and depending on their membership
+to one of the two basic categories (normal user or buyer, and artist) has a few different options.
 
-Los usuarios se registran (Signup) con contraseña segura y pueden subir su foto a modo de
-avatar.
+Artist: You can upload, modify, delete and view works of art.
+Buyer: You can see and buy works of art.
 
-Las obras de arte se incorporan dentro de una categoría (escultura, fotografía, etc),
-se incorporan además con características como el precio de salida, posteriormente se les añade una imagen.
+The users register (Signup) with a secure password and can upload their photo by way of avatar.
 
-Tecnologías empleadas: JS, CSS, HTML, Node.js, Bower, MongoDB, Mongoose, Express, Passport.
+The works of art are incorporated into a category (sculpture, photography, etc.),
+they are also incorporated with features such as the starting price, after which an image is added.
 
-Tareas en proceso, tarea de maduración general. En particular: -Mejoras front-end y back-end. Maduración. -Mejora portabilidad. -Incremento de opciones para los usuarios -Incorporación aportaciones UX/UI. -Gestión BBDD offers. -Incorporación e Implementación de pasarelas seguras de pago. -Incorporación de mayor complejidad en transacciones (subastas..) -Y muchas más...
+Technologies used: JS, CSS, HTML, Node.js, Bower, MongoDB, Mongoose, Express, Passport.
+
+Tasks in process, task of general maturation. In particular: - Front-end and back-end improvements. Maturation. -Improved portability. -Increased options for users -Incorporation contributions UX / UI. -Management BBDD offers. -Incorporation and Implementation of secure payment gateways. -Incorporation of greater complexity in transactions (auctions ..) -And many more ...

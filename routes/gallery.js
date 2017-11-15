@@ -3,6 +3,7 @@ const Artwork = require('../models/artwork');
 const TYPES = require('../models/artwork-types');
 const router = express.Router();
 const multer = require('multer');
+const fs = require('fs');
 let upload = multer({
   dest: './public/uploads/'
 });
@@ -13,6 +14,8 @@ const {
   authorizeArtwork,
   checkOwnership
 } = require('../middleware/artwork-authorization');
+
+console.log("in gallery.js");
 
 router.get('/new', (req, res) => {
   res.render('gallery/new', {
@@ -138,27 +141,48 @@ router.get('/:id/delete', [ensureLoggedIn('/login'), authorizeArtwork], (req, re
   });
 });
 
-/* post to delete*/
+/* post to delete artwork from gallery and artwork file from /public */
 router.post('/:id/delete', (req, res, next) => {
   const id = req.params.id;
   Artwork.findByIdAndRemove(id, (err, product) => {
+    var artTodelete='public'+product.pic_path;
     if (err) {
       return next(err);
     }
+    else {
+      fs.unlink(artTodelete, (err) => {
+        try{
+          if (err) throw err;
+          console.log('successfully deleted file: '+artTodelete);
+        }
+        catch (err){
+          console.log(err);
+          console.log("Do not find this file: "+artTodelete);
+        }
+        finally {
+          console.log("Unkink made");
+        }
+      });
+    }
+
     return res.redirect('/user');
   });
 });
-/*upper added to delete artwork*/
 
-/*get to buy page*/
+
+//get to buy page, reformed
 router.get('/:id/buy', ensureLoggedIn('/login'), (req, res, next) => {
-  Artwork.findById(req.params.id, (err, artwork) => {
+  Artwork
+  .findById(req.params.id, (err, artwork) => {
     if (err) {
       return next(err);
     }
     if (!artwork) {
       return next(new Error("404"));
     }
+  })
+  .populate('_creator')
+  .exec((err,artwork)=>{
     return res.render('gallery/buy', {
       artwork,
       types: TYPES,
@@ -166,5 +190,6 @@ router.get('/:id/buy', ensureLoggedIn('/login'), (req, res, next) => {
     });
   });
 });
+
 
 module.exports = router;

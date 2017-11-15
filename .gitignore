@@ -25,8 +25,11 @@ build/Release
 # Dependency directory
 # https://docs.npmjs.com/cli/shrinkwrap#caveats
 node_modules
+/uploads
+uploads
 
 # Debug log from npm
 npm-debug.log
 
 bower_components
+.DS_Store

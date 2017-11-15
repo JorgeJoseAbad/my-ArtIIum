@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Artwork = require('../models/artwork');
+//const Artwork = require('../models/artwork');
 const passport = require('passport');
 const {
   ensureLoggedIn,
   ensureLoggedOut
 } = require('connect-ensure-login');
 
+console.log("in authentication.js");
+
+/*
 router.get('/', (req, res, next) => {
   Artwork
     .find({})
@@ -18,7 +21,7 @@ router.get('/', (req, res, next) => {
       });
     });
 });
-
+*/
 router.get('/login', ensureLoggedOut(), (req, res) => {
   res.render('authentication/login', {
     req
