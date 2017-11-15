@@ -20,13 +20,16 @@
       <div class="artwork-image" style="background-image:url('<%= artwork.pic_path %>')">
       </div>
     </div>
+
     <div class="col-sm-6 artwork-info">
-      <form action="upload" method="post" enctype="multipart/form-data" class="">
-        <label for="upload-photo" class="">Upload your Photo</label>
-        <input type="file" name="artworkImage" id="upload-photo" class="form-control">
-        <input type="hidden" value="<%= artwork._id%>" name="_id" id="upload-photo" class="form-control">
-        <button class="btn btn-primary" type="submit" value="Upload an Artwork Photo!">Upload an Artwork Photo!</button>
-      </form>
+      <% if (artworkIsCurrentUsers) { %>
+        <form action="upload" method="post" enctype="multipart/form-data" class="">
+          <label for="upload-photo" class="">Upload your Photo</label>
+          <input type="file" name="artworkImage" id="upload-photo" class="form-control">
+          <input type="hidden" value="<%= artwork._id%>" name="_id" id="upload-photo" class="form-control">
+          <button class="btn btn-primary" type="submit" value="Upload an Artwork Photo!">Upload an Artwork Photo!</button>
+        </form>
+      <% } %>
       <div class="artwork-progress">
         <p><%= artwork.description %></p>
       </div>
