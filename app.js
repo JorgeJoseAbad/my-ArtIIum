@@ -1,29 +1,31 @@
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const expressLayouts = require('express-ejs-layouts');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const User = require('./models/user');
-const bcrypt = require('bcrypt');
-const flash = require("connect-flash");
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const mongoose = require('mongoose');
-const multer = require('multer');
-const index = require('./routes/index');
-const authRoutes = require('./routes/authentication');
-const artworkRoutes = require('./routes/gallery');
-const usersRoutes = require('./routes/users');
+require("dotenv").config();
+const express         = require('express');
+const path            = require('path');
+const favicon         = require('serve-favicon');
+const logger          = require('morgan');
+const cookieParser    = require('cookie-parser');
+const bodyParser      = require('body-parser');
+const expressLayouts  = require('express-ejs-layouts');
+const passport        = require('passport');
+const LocalStrategy   = require('passport-local').Strategy;
+const User            = require('./models/user');
+const bcrypt          = require('bcrypt');
+const flash           = require("connect-flash");
+const session         = require('express-session');
+const MongoStore      = require('connect-mongo')(session);
+const mongoose        = require('mongoose');
+const multer          = require('multer');
+const index           = require('./routes/index');
+const authRoutes      = require('./routes/authentication');
+const artworkRoutes   = require('./routes/gallery');
+const usersRoutes     = require('./routes/users');
 
-mongoose.Promise = require('bluebird');
+mongoose.Promise      = require('bluebird');
 
-mongoose.connect('mongodb://localhost/artiium');
 
-console.log("in app.js");
+mongoose.connect(process.env.MONGODB_URI);
+
+
 
 const app = express();
 // view engine setup

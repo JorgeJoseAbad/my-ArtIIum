@@ -15,7 +15,7 @@ const {
   checkOwnership
 } = require('../middleware/artwork-authorization');
 
-console.log("in gallery.js");
+
 
 router.get('/new', (req, res) => {
   res.render('gallery/new', {

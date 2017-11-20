@@ -26,6 +26,7 @@ const ArtworkSchema = new Schema({
     type: Number,
     required: true
   },
+  //bids: [ { type: Schema.Types.ObjectId,  ref: 'Bid' } ],
   // deadline: {
   //   type: Date,
   //   required: true

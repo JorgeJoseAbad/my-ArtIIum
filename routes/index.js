@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Artwork = require('../models/artwork');
 
-console.log("in index.js");
+
 
 /* GET home page. */
 router.get('/', (req, res, next) => {

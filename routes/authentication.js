@@ -7,7 +7,7 @@ const {
   ensureLoggedOut
 } = require('connect-ensure-login');
 
-console.log("in authentication.js");
+
 
 /*
 router.get('/', (req, res, next) => {
